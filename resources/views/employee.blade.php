@@ -1,7 +1,5 @@
 <x-layout>
     <x-slot:heading>
-        Home page
+        Employee page
     </x-slot:heading>
-   
-
 </x-layout>
