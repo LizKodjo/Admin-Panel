@@ -10,8 +10,10 @@
     <h2>Company website: {{ $company->website }} </h2>
     {{-- <h3>Employees: {{ $company->employees->id }} </h3> --}}
 
-    <p>
-        <x-button href="/companies/{{ $company->id }}/edit">Edit Company</x-button>
-    </p>
+    @can('edit', $company)
+        <p>
+            <x-button href="/companies/{{ $company->id }}/edit">Edit Company</x-button>
+        </p>
+    @endcan
 
 </x-layout>

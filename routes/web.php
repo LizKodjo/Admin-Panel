@@ -28,13 +28,22 @@ Route::controller(CompanyController::class)->group(function () {
     // Show
     Route::get('/companies/{company}', 'show');
     // Store
-    Route::post('/companies', 'store');
+    Route::post('/companies', 'store')->middleware('auth');
+
     // edit
-    Route::get('/companies/{company}/edit', 'edit');
+    Route::get('/companies/{company}/edit', 'edit')
+        ->middleware('auth')
+        ->can('edit', 'company');
+
     // Update
-    Route::patch('/companies/{company}', 'update');
+    Route::patch('/companies/{company}', 'update')
+        ->middleware('auth')
+        ->can('edit', 'company');
+
     // Destroy
-    Route::delete('/companies/{company}', 'destroy');
+    Route::delete('/companies/{company}', 'destroy')
+        ->middleware('auth')
+        ->can('edit', 'company');
 });
 
 
@@ -45,19 +54,27 @@ Route::controller(CompanyController::class)->group(function () {
 
 // Employees routes
 
-Route::resource('employees', EmployeeController::class);
+//Route::resource('employees', EmployeeController::class);
 
-// // Index
-// Route::get('/employees', [EmployeeController::class, 'index']);
-// // Create
-// Route::get('/employees/create', [EmployeeController::class, 'create']);
-// // Show
-// Route::get('/employees/{employee}', [EmployeeController::class, 'show']);
-// // Store
-// Route::post('/employees', [EmployeeController::class, 'store']);
-// // Edit
-// Route::get('/employees/{employee}/edit', [EmployeeController::class, 'edit']);
-// // Update
-// Route::patch('/employees/{employee}', [EmployeeController::class, 'update']);
-// // Delete
-// Route::delete('/employees/{employee}', [EmployeeController::class, 'destroy']);
+// Index
+Route::get('/employees', [EmployeeController::class, 'index']);
+// Create
+Route::get('/employees/create', [EmployeeController::class, 'create']);
+// Show
+Route::get('/employees/{employee}', [EmployeeController::class, 'show']);
+// Store
+Route::post('/employees', [EmployeeController::class, 'store'])->middleware('auth');
+// Edit
+Route::get('/employees/{employee}/edit', [EmployeeController::class, 'edit'])
+    ->middleware('auth')
+    ->can('edit', 'employee');
+
+// Update
+Route::patch('/employees/{employee}', [EmployeeController::class, 'update'])
+    ->middleware('auth')
+    ->can('edit', 'employee');
+
+// Delete
+Route::delete('/employees/{employee}', [EmployeeController::class, 'destroy'])
+    ->middleware('auth')
+    ->can('edit', 'employee');

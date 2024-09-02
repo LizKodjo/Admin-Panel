@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class EmployeeController extends Controller
 {
@@ -46,6 +49,8 @@ class EmployeeController extends Controller
     }
     public function edit(Employee $employee)
     {
+        //Gate::authorize('edit-employee', $employee);
+
         return view('employees.edit', ['employee' => $employee]);
     }
     public function update(Employee $employee)

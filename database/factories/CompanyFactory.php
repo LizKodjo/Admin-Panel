@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,6 +22,7 @@ class CompanyFactory extends Factory
             'email' => fake()->companyEmail(),
             'logo' => fake()->image('storage/app/public', 100, 100),
             'website' => fake()->domainName(),
+            //'employee_id' => Employee::factory(),
         ];
     }
 }

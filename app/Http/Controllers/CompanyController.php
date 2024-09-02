@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CompanyController extends Controller
 {
@@ -41,6 +42,7 @@ class CompanyController extends Controller
     }
     public function edit(Company $company)
     {
+        //Gate::authorize('edit-company', $company);
         return view('companies.edit', ['company' => $company]);
     }
     public function update(Company $company)

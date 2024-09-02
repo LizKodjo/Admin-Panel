@@ -10,7 +10,9 @@
     <h2>Email: {{ $employee->email }} </h2>
     <h2>Phone: {{ $employee->phone }} </h2>
 
-    <p>
-        <x-button href="/employees/{{ $employee->id }}/edit">Edit Employee</x-button>
-    </p>
+    @can('edit', $employee)
+        <p>
+            <x-button href="/employees/{{ $employee->id }}/edit">Edit Employee</x-button>
+        </p>
+    @endcan
 </x-layout>

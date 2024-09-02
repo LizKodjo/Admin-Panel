@@ -31,7 +31,7 @@
                             <x-form-input name="last_name" id="last_name" value="{{ $employee->last_name }}"
                                 required></x-form-input>
                         </div>
-                        <x-form-error for="last_name"></x-form-error>
+                        <x-form-error name="last_name"></x-form-error>
                     </x-form-field>
 
                     <x-form-field>

@@ -4,7 +4,10 @@
         Welcome
     </x-slot:header>
 
-    <a href="/companies">Companies</a><br>
-    <a href="/employees">Employees</a>
+    <div class="d-flex justify-content-around">
+        <x-button href="/companies">Companies</x-button>
+        {{-- <a Companies</a><br> --}}
+        <x-button href="/employees">Employees</x-button>
+    </div>
 
 </x-layout>
