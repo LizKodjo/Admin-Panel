@@ -35,7 +35,7 @@ To view my project please clone my [repo](https://github.com/LizKodjo/Admin-Pane
 
 ### Installing dependencies
 
-After cloning my repo, run 'npm install' in your IDE of choice, after which, you should run 'npm run dev' to view on your localhost.
+After cloning my repo, run 'npm install' to install dependencies, after which, you should run 'npm run dev' to view.
 
 ## How it works
 
