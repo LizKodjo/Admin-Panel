@@ -41,7 +41,7 @@ My project can be viewed [here](https://laravel.elizabeth-kodjo.netmatters-scs.c
 
 The project has a list of companies and employees, which can be viewed by clicking the buttons on the homepage.
 
-To edit or view more details, user has to be logged in.
+A user who is not logged in cannot edit a company or employee.
 
 ## License
 
