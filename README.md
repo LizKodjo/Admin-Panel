@@ -29,13 +29,13 @@ You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## To view my project
+## To view my code
 
 To view my project please clone my [repo](https://github.com/LizKodjo/Admin-Panel.git)
 
-### Installing dependencies
+### To view my project
 
-After cloning my repo, run 'npm install' to install dependencies, after which, you should run 'npm run dev' to view.
+My project can be viewed [here](https://laravel.elizabeth-kodjo.netmatters-scs.co.uk)
 
 ## How it works
 
