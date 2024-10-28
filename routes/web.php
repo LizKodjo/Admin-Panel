@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,4 +20,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+//Company routes
+Route::resource('company', CompanyController::class);
+
+//Employee routes
+Route::resource('employee', EmployeeController::class);
+
+require __DIR__ . '/auth.php';
