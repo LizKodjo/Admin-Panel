@@ -11,7 +11,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $title = "Dashboard";
+    return view('dashboard', compact('title'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -21,7 +22,7 @@ Route::middleware('auth')->group(function () {
 });
 
 //Company routes
-Route::resource('company', CompanyController::class);
+Route::resource('company', CompanyController::class)->middleware(['auth', 'verified']);
 
 //Employee routes
 Route::resource('employee', EmployeeController::class);

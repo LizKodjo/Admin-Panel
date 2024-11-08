@@ -1,7 +1,7 @@
 <x-app-layout :title=$title>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Companies') }}
+            {{ __('Employees') }}
         </h2>
     </x-slot>
 
@@ -42,12 +42,12 @@
         <div class="flex justify-between items-center">
             <div class="float-left">
                 <h2 class="text-3xl font-extrabold text-gray-900 dark:text-gray-100">
-                    {{ __('List of Companies') }}
+                    {{ __('List of Employees') }}
                 </h2>
             </div>
             <div>
 
-                <x-green-btn-link :href="route('company.create')">Create</x-green-btn-link>
+                <x-green-btn-link :href="route('employee.create')">Create</x-green-btn-link>
             </div>
         </div>
         {{-- </div> --}}
@@ -55,17 +55,20 @@
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-6 space-y-6">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" class="px-6 py-3">
+                    {{-- <th scope="col" class="px-6 py-3">
                         Company Name
+                    </th> --}}
+                    <th scope="col" class="px-6 py-3">
+                        First name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Last name
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Email
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Logo
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Website
+                        Phone
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Actions
@@ -73,26 +76,29 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($companies as $company)
+                @forelse ($employees as $employee)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row"
+                        {{-- <th scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $company->name }}
-                        </th>
+                        </th> --}}
                         <td class="px-6 py-4">
-                            {{ $company->email }}
+                            {{ $employee->first_name }}
                         </td>
                         <td class="px-6 py-4">
-                            <img src="{{ $company->logo }}" alt="Logo" class="rounded" height="100"
-                                width="100">
+                            {{ $employee->last_name }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $company->website }}
+                            {{ $employee->email }}
+                        </td>
+
+                        <td class="px-6 py-4">
+                            {{ $employee->phone }}
                         </td>
                         <td class="px-6 py-4 inline-flex">
                             {{-- <i class="fa-regular fa-pen-to-square"></i>
                             <i class="fa-regular fa-trash-can"></i> --}}
-                            <a href="{{ route('company.show', $company) }} ">
+                            <a href="{{ route('employee.show', $employee) }} ">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -102,7 +108,7 @@
                                 </svg>
                             </a>
 
-                            <a href="{{ route('company.edit', $company) }} ">
+                            <a href="{{ route('employee.edit', $employee) }} ">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -110,7 +116,7 @@
                                 </svg>
                             </a>
 
-                            <form method="POST" action="{{ route('company.destroy', $company) }}">
+                            <form method="POST" action="{{ route('employee.destroy', $employee) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
@@ -123,21 +129,21 @@
                                 </button>
                             </form>
 
-                            <a href="{{ route('employee.create') }}">
+                            {{-- <a href="">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
                                 </svg>
 
-                            </a>
+                            </a> --}}
                         </td>
                     </tr>
 
                 @empty
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" colspan="4" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            No Company found!
+                        <th scope="row" colspan="6" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            No Employee found!
                         </th>
                     </tr>
                 @endforelse
@@ -145,14 +151,10 @@
 
             </tbody>
         </table>
-        {{-- </div> --}}
-
         <div>
-            {{ $companies->links() }}
+            {{ $employees->links() }}
         </div>
 
     </div>
 
-
-    {{-- </div> --}}
 </x-app-layout>

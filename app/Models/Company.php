@@ -10,9 +10,11 @@ class Company extends Model
 {
     use HasFactory;
 
+    //Allow mass assignment
     protected $guarded = [];
 
-    public function employees(): HasMany
+    //Create relationship with employee - Company has many employees
+    public function employees() //: HasMany
     {
         return $this->hasMany(Employee::class);
     }
