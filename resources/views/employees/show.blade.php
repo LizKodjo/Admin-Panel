@@ -12,7 +12,7 @@
          shadow-md rounded-md overflow-hidden">
             <div class="p-6">
                 <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">
-                    {{ $company->name }}
+                    {{ $employee->company->name }}
                 </h2>
                 <p class="text-gray-800 dark:text-gray-300 mt-2">
                     {{ $employee->first_name }}

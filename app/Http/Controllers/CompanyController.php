@@ -45,9 +45,16 @@ class CompanyController extends Controller
             'name' => 'required|string|min:5|max:150',
             'email' => 'nullable|email|min:3',
             // 'logo' => 'nullable|min:5|image|mimes:png,jpg',
-            'logo' => 'nullable|image|mimes:png,jpg',
-            'website' => 'nullable|min:5|max:150'
+            'logo' => 'nullable|mimes:png,jpg,jpeg|max:1024',
+            'website' => 'nullable|min:5|max:300|string'
         ]);
+
+        if ($request->has('logo')) {
+            //create unique name
+            $logoName = time() . '.' . $request->logo->getClientOriginalExtension();
+            $request->logo->move(public_path('storage/app/public'), $logoName);
+            $validated['logo'] = $logoName;
+        }
 
         //Create company
         Company::create(
@@ -66,6 +73,7 @@ class CompanyController extends Controller
     {
         // dd($company);
         $title = "Company Details";
+        $employees = Employee::all();
         return view('companies.show', compact(['company', 'title']));
     }
 

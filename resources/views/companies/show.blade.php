@@ -18,7 +18,8 @@
                     {{ $company->email }}
                 </p>
                 <p class="text-gray-800 dark:text-gray-300 mt-2">
-                    <img src="{{ $company->logo }}" alt="Logo" class="rounded" height="100" width="100">
+                    <img src="{{ asset('storage/app/public/' . $company->logo) }}" alt="Logo" class="rounded"
+                        width="100" height="100">
                 </p>
                 <p class="text-gray-800 dark:text-gray-300 mt-2">
                     {{ $company->website }}

@@ -25,13 +25,15 @@
             <div class="p-6 text-gray-900">
                 {{-- {{ __('Create Employee') }} --}}
 
+                {{-- <p>{{ $company->name }}</p> --}}
+
                 <form method="post" action="{{ route('employee.store') }}" class="mt-6 space-y-6">
                     @csrf
 
                     <div>
                         <x-input-label for="company" :value="__('Company Name')" />
                         <x-text-input id="company" name="company" type="text" class="mt-1 block w-full"
-                            :value="old('company')" required autofocus autocomplete="company" />
+                            :value="old('company', $company->name)" required autofocus autocomplete="company" />
                         <x-input-error class="mt-2" :messages="$errors->get('company')" />
                     </div>
 

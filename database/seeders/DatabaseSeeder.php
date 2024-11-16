@@ -22,12 +22,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
         ]);
 
-        // Company::factory(30)
-        //     ->has(Employee::factory(5))
-        //     ->create();
-
-        Employee::factory(10)
-            ->recycle(Company::factory(20)->create())
+        Company::factory(30)
+            ->has(Employee::factory(5))
             ->create();
+
+        // Employee::factory(10)
+        //     ->recycle(Company::factory(20)->create())
+        //     ->create();
     }
 }

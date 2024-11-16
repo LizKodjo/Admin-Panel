@@ -42,7 +42,7 @@ class EmployeeController extends Controller
     {
         //Validation
         $validated = $request->validate([
-            'company_id' => 1,
+            'company_id' => Company::factory(),
             'first_name' => 'required|min:2|max:150|string',
             'last_name' => 'required|min:2|max:150|string',
             'email' => 'nullable|email|min:5',
@@ -52,7 +52,7 @@ class EmployeeController extends Controller
         // $request->company()->employees()->create($validated);
 
         Employee::create($validated);
-        dd('created');
+        // dd('created');
         return redirect()->route('employees.index', $company)->with('success', 'Employee added successfully');
     }
 
@@ -62,7 +62,7 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         $title = "Employee Details";
-        return view('employees.show', compact('employee'));
+        return view('employees.show', compact('employee', 'title'));
     }
 
     /**
@@ -80,7 +80,7 @@ class EmployeeController extends Controller
     public function update(Request $request, Employee $employee)
     {
         $validated = $request->validate([
-            'company_id' => 1,
+            'company_id' => Company::factory(),
             'first_name' => 'required|min:2|max:150|string',
             'last_name' => 'required|min:2|max:150|string',
             'email' => 'nullable|email|min:5',
