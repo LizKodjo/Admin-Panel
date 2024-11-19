@@ -19,6 +19,8 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -39,6 +41,30 @@
             {{ $slot }}
         </main>
     </div>
+
+    {{-- <script>
+        $('#company').on('change', function() {
+            var company_id = $('#company').val();
+            console.console.log(company_id);
+
+            var url = '{{ route('company.show', 'company_id') }}';
+            url = url.replace('company_id', company_id);
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                success: function(data) {
+                    if (data.success == true) {
+                        var company_data = data.data;
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            })
+
+        });
+    </script> --}}
+
 </body>
 
 </html>

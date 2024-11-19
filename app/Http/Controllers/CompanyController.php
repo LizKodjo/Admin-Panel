@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
+use File;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Storage;
@@ -16,13 +17,11 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        // dd(auth()->id());
+
         //Get all companies from database
         $title = "All Companies";
         $companies = Company::with('employees')->latest()->simplePaginate(10);
-        // $companies = Company::with('employees');
-        // $companies = Company::all()->simplePagination(10);
-        // $employees = Employee::where('company_id', auth()->id())->get();
+
         return view('companies.index', compact(['companies', 'title']));
     }
 
@@ -44,7 +43,6 @@ class CompanyController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|min:5|max:150',
             'email' => 'nullable|email|min:3',
-            // 'logo' => 'nullable|min:5|image|mimes:png,jpg',
             'logo' => 'nullable|mimes:png,jpg,jpeg|max:1024',
             'website' => 'nullable|min:5|max:300|string'
         ]);
@@ -97,9 +95,28 @@ class CompanyController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|min:5|max:150',
             'email' => 'nullable|email|min:3',
-            'logo' => 'nullable|min:5|mimes:png,jpg',
+            'logo' => 'sometimes|max:1024|mimes:png,jpg,jpeg',
             'website' => 'nullable|min:5|max:150'
         ]);
+
+        if ($request->has('logo')) {
+            //check old image
+            $oldimage = 'storage/app/public' . $company->logo;
+
+            //delete old image
+            if (File::exists($oldimage)) {
+                File::delete($oldimage);
+            }
+
+            //update with new logo
+            $newLogo = time() . '.' . $request->logo->getClientOriginalExtension();
+            //move logo to server
+            $request->logo->move(public_path('storage/app/public'), $newLogo);
+
+            $validated['logo'] = $newLogo;
+        }
+
+
         $company->update($validated);
         return redirect(route('company.index'))
             ->with('success', 'Company updated successfully');
@@ -110,6 +127,14 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
+        //delete logo from server
+
+        if ($company->logo) {
+            $savedLogo = 'storage/app/public/' . $company->logo;
+            if (File::exists($savedLogo)) {
+                File::delete($savedLogo);
+            }
+        }
         $company->delete();
         return redirect(route('company.index'))
             ->with('success', 'Company deleted successfully');

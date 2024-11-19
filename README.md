@@ -7,13 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About My Project
 
-My project is a panel for companies with employees.
+Using Laravel, I created my project is an application used to store information of companies and their employees.
 
-To update the database, user must be logged in.
-
-User should be able to creat, view, update and delete data.
+A logged in user should be able to create, view, update and delete data.
 
 If the user is not logged in, they would just be able to view a list of the companies and employees.
 

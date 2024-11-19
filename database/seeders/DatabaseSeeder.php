@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
         ]);
 
-        Company::factory(30)
+        Company::factory(20)
             ->has(Employee::factory(5))
             ->create();
 

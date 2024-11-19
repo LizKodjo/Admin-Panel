@@ -32,8 +32,14 @@
 
                     <div>
                         <x-input-label for="company" :value="__('Company Name')" />
-                        <x-text-input id="company" name="company" type="text" class="mt-1 block w-full"
-                            :value="old('company', $company->name)" required autofocus autocomplete="company" />
+                        <select name="company" id="company_id" class="mt-1 block w-full form-select">
+                            <option value="">Choose company</option>
+                            @foreach ($company as $comp)
+                                <option value="{{ $comp->id }}">{{ $comp->name }}</option>
+                            @endforeach
+                        </select>
+                        {{-- <x-text-input id="company" name="company" type="text" class="mt-1 block w-full" --}}
+                        {{-- :value="old('company', $company->name)" required autofocus autocomplete="company" /> --}}
                         <x-input-error class="mt-2" :messages="$errors->get('company')" />
                     </div>
 
@@ -78,5 +84,6 @@
     </div>
     </div>
     </div>
+
     {{-- </div> --}}
 </x-app-layout>

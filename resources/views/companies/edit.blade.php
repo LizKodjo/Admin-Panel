@@ -49,10 +49,10 @@
                         <x-input-label for="logo" :value="__('Logo')" />
                         {{-- <x-text-input id="logo" name="logo" type="text" class="mt-1 block w-full"
                             :value="old('logo', $company->logo)" /> --}}
-                        <p class="text-gray-800 dark:text-gray-300 mt-2">
-                            <img src="{{ asset('storage/app/public/' . $company->logo) }}" alt="Logo"
-                                class="rounded" width="100" height="100">
-                        </p>
+                        {{-- <p class="text-gray-800 dark:text-gray-300 mt-2"> --}}
+                        <img src="{{ asset('storage/app/public/' . $company->logo) }}" alt="{{ $company->name }}"
+                            class="rounded" width="100" height="100">
+                        {{-- </p> --}}
                         <x-text-input id="logo" name="logo" type="file" class="mt-1 block w-full"
                             :value="old('logo', $company->logo)" />
                         <x-input-error class="mt-2" :messages="$errors->get('logo')" />

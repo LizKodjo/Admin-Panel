@@ -83,8 +83,9 @@
                             {{ $company->email }}
                         </td>
                         <td class="px-6 py-4">
-                            <img src="storage/app/public/{{ $company->logo }}" alt="{{ $company->name }}"
+                            <img src="storage/app/public/{{ $company->logo }}" alt="{{ $company->name }}" --}}
                                 class="rounded" style="width:100;">
+
                         </td>
                         <td class="px-6 py-4">
                             {{ $company->website }}
@@ -136,7 +137,7 @@
 
                 @empty
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" colspan="4" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        <th scope="row" colspan="5" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             No Company found!
                         </th>
                     </tr>

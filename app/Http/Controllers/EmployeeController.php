@@ -18,9 +18,6 @@ class EmployeeController extends Controller
         // Get all employees from database
         $title = "All employees";
         $employees = Employee::with('company')->latest()->simplePaginate(10);
-        // $employees = $company->employees;
-        // $employees = Employee::whereColumn(auth()->company_id())->get();
-        // $employees = Employee::whereUserId(auth()->company_id())->get();
         return view('employees.index', compact('employees', 'title'));
     }
 
@@ -32,6 +29,8 @@ class EmployeeController extends Controller
     {
         // return view('employees.create', ['company' => $company]);
         $title = "Create Employee";
+        $company = Company::all();
+        // $company_data = Company::where('company_id', $company_id)->get();
         return view('employees.create', ['company' => $company], compact('title'));
     }
 
@@ -48,8 +47,7 @@ class EmployeeController extends Controller
             'email' => 'nullable|email|min:5',
             'phone' => 'nullable|string|min:11'
         ]);
-        // $request->$company->employees()->create($validated);
-        // $request->company()->employees()->create($validated);
+
 
         Employee::create($validated);
         // dd('created');
