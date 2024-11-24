@@ -32,8 +32,8 @@
 
                     <div>
                         <x-input-label for="company" :value="__('Company Name')" />
-                        <select name="company" id="company_id" class="mt-1 block w-full form-select">
-                            <option value="">Choose company</option>
+                        <select name="company" id="company" class="mt-1 block w-full form-select">
+                            <option value="company">Choose company</option>
                             @foreach ($company as $comp)
                                 <option value="{{ $comp->id }}">{{ $comp->name }}</option>
                             @endforeach

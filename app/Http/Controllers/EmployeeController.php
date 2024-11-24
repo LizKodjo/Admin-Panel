@@ -30,6 +30,7 @@ class EmployeeController extends Controller
         // return view('employees.create', ['company' => $company]);
         $title = "Create Employee";
         $company = Company::all();
+
         // $company_data = Company::where('company_id', $company_id)->get();
         return view('employees.create', ['company' => $company], compact('title'));
     }

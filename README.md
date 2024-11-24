@@ -9,7 +9,7 @@
 
 ## About My Project
 
-Using Laravel, I created my project is an application used to store information of companies and their employees.
+Using Laravel, I created my project which is an application used to store information of companies and their employees.
 
 A logged in user should be able to create, view, update and delete data.
 
